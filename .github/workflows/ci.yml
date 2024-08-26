@@ -1,40 +1,21 @@
-# name: CI
-
-# on:
-#   push:
-#     branches: [ main ]
-#   pull_request:
-#     branches: [ main ]
-
-# jobs:
-#   build:
-#     runs-on: ubuntu-latest
-#     steps:
-#     - uses: actions/checkout@v3
-#     - name: Set up Node.js
-#       uses: actions/setup-node@v3
-#       with:
-#         node-version: '16' # Specify the Node.js version
-#     - name: Install dependencies
-#       run: npm install
-#     - name: Run tests
-#       run: npm test || echo "No tests to run" # Or your preferred test command
-name: "Manual Dependabot Trigger"
+name: CI
 
 on:
-  workflow_dispatch:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
-  dependabot:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Run Dependabot
-        uses: dependabot/dependabot-core@v1
-        with:
-          package-manager: 'npm_and_yarn'
-          directory: '/'
-          target-branch: 'main'
-          open-pull-requests-limit: 5
+    - uses: actions/checkout@v3
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16' # Specify the Node.js version
+    - name: Install dependencies
+      run: npm install
+    - name: Run tests
+      run: npm test || echo "No tests to run" # Or your preferred test command
