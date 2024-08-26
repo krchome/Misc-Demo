@@ -1,6 +1,0 @@
-version: 2
-updates:
-  - package-ecosystem: "npm" # or "yarn" if you are using Yarn
-    directory: "/" # Location of your package.json file
-    schedule:
-      interval: "daily" # Frequency of checks (daily, weekly, or monthly)
